@@ -1,0 +1,133 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+                <div class="card-header">
+                    <h5>Add User</h5>
+                </div>
+                <div class="card-body tab2-card">
+                    <ngb-tabset class="tab-coupon" activeId="logintab" #tabset="ngbTabset">
+
+                        <ngb-tab id="registrationtab">
+                            <ng-template ngbTabTitle></ng-template>
+                            <ng-template ngbTabContent>
+                                <!--registration form start -->
+                                <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" class="needs-validation">
+                                    <h4>Account Details</h4>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>First
+                                            Name</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="firstName"
+                                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.firstName.errors">
+                                            <div *ngIf="f.firstName.errors.required">First Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>Last
+                                            Name</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="lastName"
+                                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.lastName.errors">
+                                            <div *ngIf="f.lastName.errors.required">Last Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>Email
+                                        </label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="email"
+                                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.email.errors">
+                                            <div *ngIf="f.email.errors.required">Email is required
+                                            </div>
+                                            <div *ngIf="f.email.errors.email">Email must be a valid email
+                                                address
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>User Type
+                                        </label>
+                                        <select class="form-control col-xl-8 col-md-7" formControlName="userTypeId"
+                                            [ngClass]="{ 'is-invalid': submitted && f.userTypeId.errors }">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let type of objUserTypes" [value]="type.id">
+                                                {{type.name}}
+                                            </option>
+                                        </select>
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.userTypeId.errors">
+                                            <div *ngIf="f.userTypeId.errors.required">User Type is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>Password
+                                        </label>
+                                        <input class="form-control col-xl-8 col-md-7" type="password"
+                                            formControlName="password"
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.password.errors">
+                                            <div *ngIf="f.password.errors.required">Password is required
+                                            </div>
+                                            <div *ngIf="f.password.errors.minlength">Password must be atleast 6
+                                                characters
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd-4"><span>*</span>Confirm
+                                            Password
+                                        </label>
+                                        <input class="form-control col-xl-8 col-md-7" type="password"
+                                            formControlName="confirmPassword"
+                                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted && f.confirmPassword.errors">
+                                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is
+                                                required
+                                            </div>
+                                            <div *ngIf="f.confirmPassword.errors.mustMatch">Password must match
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-button">
+                                        <button class="btn btn-primary" type="submit">{{buttonText}}</button>
+                                    </div>
+                                </form>
+                                <!--registration form end -->
+                            </ng-template>
+                        </ngb-tab>
+
+
+                    </ngb-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

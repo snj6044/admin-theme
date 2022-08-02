@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>User Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="btn-popup pull-right">
+                <a class="btn btn-secondary" [routerLink]="'/users/create-user'">Add User</a>
+            </div>
+            <div id="batchDelete" class="category-table custom-datatable transcation-datatable userimage">
+                <div class="table-responsive">
+                    <ngx-datatable class="bootstrap" [rows]="objRows" [columnMode]="'force'" [headerHeight]="50"
+                        [footerHeight]="50" [rowHeight]="'auto'" [limit]="5">
+                        <ngx-datatable-column class="bootstrap" name="FirstName">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column class="bootstrap" name="LastName">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column class="bootstrap" name="Email">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column class="bootstrap" name="UserType">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column class="bootstrap" name="CreatedOn">
+                        </ngx-datatable-column>
+
+
+                        <!-- <ngx-datatable-column name="Inserted On 1">
+                            <ng-template let-column="column" ngx-datatable-header-template>
+                                {{column.name}}
+                            </ng-template>
+                            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                {{row['createdOn']}}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Inserted On 2" prop="createdOn">
+                            <ng-template let-column="column" ngx-datatable-header-template>
+                                {{column.name}}
+                            </ng-template>
+                            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                {{value}}
+                            </ng-template>
+                        </ngx-datatable-column> -->
+
+
+                        <ngx-datatable-column name="Actions" sortable="false" prop="id">
+                            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                {{column.name}}
+                            </ng-template>
+                            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                <button type="button" (click)="Edit(value)"><i class="fa fa-edit"></i> </button>
+                                <button type="button" (click)="Delete(value)"><i class="fa fa-trash-o"></i> </button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+<div class="page-wrapper">
+    <div class="authentication-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-0 card-right">
+                    <div class="card tab2-card">
+                        <div class="card-body">
+                            <ngb-tabset class="tab-coupon" activeId="logintab" #tabset="ngbTabset" >
+                                <ngb-tab id="logintab">
+                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i>Login</ng-template>
+                                    <ng-template ngbTabContent>
+                                        <!--login form start -->
+                                        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="needs-validation">
+                                            <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                                aria-labelledby="account-tab">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Username"
+                                                        formControlName="userName">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Password"
+                                                        formControlName="password">
+                                                </div>
+                                                <div class="form-button">
+                                                    <button class="btn btn-primary" type="submit">Login</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!--login form end -->
+                                    </ng-template>
+                                </ngb-tab>
+
+
+                                <ngb-tab id="registrationtab">
+                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Register</ng-template>
+                                    <ng-template ngbTabContent>
+                                        <!--registration form start -->
+                                        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm)"
+                                            class="needs-validation">
+                                            <h4>Account Details</h4>
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0"
+                                                    class="col-xl-3 colmd-4"><span>*</span>First
+                                                    Name</label>
+                                                <input class="form-control col-xl-8 col-md-7" type="text"
+                                                    formControlName="firstName"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                                <div class="col-xl-3 col-md-4"></div>
+                                                <div class="col-xl-3 col-md-4 invalid-feedback"
+                                                    *ngIf="submitted && f.firstName.errors">
+                                                    <div *ngIf="f.firstName.errors.required">First Name is required
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0"
+                                                    class="col-xl-3 colmd-4"><span>*</span>Last
+                                                    Name</label>
+                                                <input class="form-control col-xl-8 col-md-7" type="text"
+                                                    formControlName="lastName"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                                <div class="col-xl-3 col-md-4"></div>
+                                                <div class="col-xl-3 col-md-4 invalid-feedback"
+                                                    *ngIf="submitted && f.lastName.errors">
+                                                    <div *ngIf="f.lastName.errors.required">Last Name is required
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0"
+                                                    class="col-xl-3 colmd-4"><span>*</span>Email
+                                                </label>
+                                                <input class="form-control col-xl-8 col-md-7" type="text"
+                                                    formControlName="email"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                                <div class="col-xl-3 col-md-4"></div>
+                                                <div class="col-xl-3 col-md-4 invalid-feedback"
+                                                    *ngIf="submitted && f.email.errors">
+                                                    <div *ngIf="f.email.errors.required">Email is required
+                                                    </div>
+                                                    <div *ngIf="f.email.errors.email">Email must be a valid email
+                                                        address
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0"
+                                                    class="col-xl-3 colmd-4"><span>*</span>Password
+                                                </label>
+                                                <input class="form-control col-xl-8 col-md-7" type="password"
+                                                    formControlName="password"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                                <div class="col-xl-3 col-md-4"></div>
+                                                <div class="col-xl-3 col-md-4 invalid-feedback"
+                                                    *ngIf="submitted && f.password.errors">
+                                                    <div *ngIf="f.password.errors.required">Password is required
+                                                    </div>
+                                                    <div *ngIf="f.password.errors.minlength">Password must be atleast 6
+                                                        characters
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0"
+                                                    class="col-xl-3 colmd-4"><span>*</span>Confirm Password
+                                                </label>
+                                                <input class="form-control col-xl-8 col-md-7" type="password"
+                                                    formControlName="confirmPassword"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                                                <div class="col-xl-3 col-md-4"></div>
+                                                <div class="col-xl-3 col-md-4 invalid-feedback"
+                                                    *ngIf="submitted && f.confirmPassword.errors">
+                                                    <div *ngIf="f.confirmPassword.errors.required">Confirm Password is
+                                                        required
+                                                    </div>
+                                                    <div *ngIf="f.confirmPassword.errors.mustMatch">Password must match
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-button">
+                                                <button class="btn btn-primary" type="submit">Register</button>
+                                            </div>
+                                        </form>
+                                        <!--registration form end -->
+                                    </ng-template>
+                                </ngb-tab>
+
+                            </ngb-tabset>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary back-btn" [routerLink]="'auth/login'">
+                        <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
+                        back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

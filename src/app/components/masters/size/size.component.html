@@ -1,0 +1,88 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>Size Master</h5>
+        </div>
+        <div class="card-body tab2-card">
+            <ngb-tabset class="tab-coupon" activeId="Viewtab" #tabset="ngbTabset">
+                <ngb-tab id="Addtab">
+                    <ng-template ngbTabTitle>Add</ng-template>
+                    <ng-template ngbTabContent>
+
+                        <form [formGroup]="sizeForm" (ngSubmit)="onSubmit()" class="needs-validation">
+                            <!--Add Start-->
+                            <div class="form-group row">
+                                <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span> Name</label>
+                                <input class="form-control col-xl-8 col-md-7" type="text" formControlName="name">
+                                <div class="col-xl-3 col-md-4"></div>
+                                <div class="col-xl-8 col-md-7"
+                                    *ngIf="sizeForm.controls['name'].touched && !sizeForm.controls['name'].valid">
+                                    <span style="color:#dc3545 !important"
+                                        *ngIf="sizeForm.controls['name'].hasError('required')">
+                                        {{validationMessage.name.required}} </span>
+
+                                    <div class="text-danger" *ngIf="formErrors.name">
+                                        {{formErrors.name}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-primary"  [disabled]="sizeForm.invalid">{{buttonText}}</button>
+                            </div>
+                            <div class="pull-right mr-2">
+                                <button type="text" (click)="setForm()" class="btn btn-primary">Cancel</button>
+                            </div>
+                            <!--Add End-->
+                        </form>
+                    </ng-template>
+                </ngb-tab>
+
+
+                <ngb-tab id="Viewtab">
+                    <ng-template ngbTabTitle>View</ng-template>
+                    <ng-template ngbTabContent>
+                        <!--View Start-->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="custom-datatable">
+                                                <ngx-datatable class="bootstrap" [rows]="objRows" [columns]="columns"
+                                                    [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                                                    [rowHeight]="'auto'" [limit]="5">
+                                                    <ngx-datatable-column class="bootstrap" name="Name">
+                                                    </ngx-datatable-column>
+                                                    <ngx-datatable-column class="bootstrap" name="CreatedOn">
+                                                    </ngx-datatable-column>
+
+                                                    <ngx-datatable-column name="Actions" sortable="false" prop="id">
+                                                        <ng-template let-column="column" let-sort="sortFn"
+                                                            ngx-datatable-header-template>
+                                                            {{column.name}}
+                                                        </ng-template>
+                                                        <ng-template let-row="row" let-value="value"
+                                                            ngx-datatable-cell-template>
+                                                            <button type="button" (click)="Edit(value)"><i
+                                                                    class="fa fa-edit"></i> </button>
+                                                            <button type="button" (click)="Delete(value)"><i
+                                                                    class="fa fa-trash-o"></i> </button>
+                                                        </ng-template>
+                                                    </ngx-datatable-column>
+                                                </ngx-datatable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--View End-->
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
+        </div>
+    </div>
+</div>
